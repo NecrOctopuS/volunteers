@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>База волонтеров</title>
+</head>
+<body>
+<div style="margin: 16px">
+    <h1>Эндпоинты:</h1>
+        <h3 style="margin-bottom: -15px">GET /districts</h3>
+        <p style="white-space: pre-wrap; padding-bottom: 10px">
+Возвращает список районов.
+Пример ответа:
+[{
+   "id": 1,
+   "title": "Прибрежный"
+},{
+   "id": 2,
+   "title": "Портовый"
+},{
+   "id": 3,
+   "title": "Петровский"
+},{
+   "id": 4,
+   "title": "Поселок Пихтовое"
+},{
+   "id": 5,
+   "title": "Центральный"
+}]
+</p>
+        <h3 style="margin-bottom: -15px">GET /streets?district=id</h3>
+        <p style="white-space: pre-wrap; padding-bottom: 10px">
+Возвращает список улиц по указанному району.
+Пример ответа:
+[{
+  "id":1,
+  "title": "Береговая Улица",
+  "volunteer": [29,23]
+},{
+  "id":21,
+  "title": "Победы Сквер",
+  "volunteer": [18,2]
+},{
+  "id":4,
+  "title": "Зеленая Улица",
+  "volunteer": [27, 24]
+},{
+  "id":29,
+  "title": "Сосновая Улица",
+  "volunteer": [16,18]
+}]
+</p>
+        <h3 style="margin-bottom: -15px">GET /volunteers?streets=id</h3>
+        <p style="white-space: pre-wrap; padding-bottom: 10px">
+Возвращает список волонтеров на указанной улице.
+Пример ответа:
+[{
+  "id": 15,
+  "name": "Коновалов Зард Ярославович",
+  "userpic": "https://randus.org/avatars/m/myAvatar1.png",
+  "phone": "+7 (984) 175-50-16"
+},{
+  "id": 5,
+  "name": "Ленина Амине Львовна",
+  "userpic": "https://randus.org/avatars/w/myAvatar14.png",
+  "phone": "+7 (921) 865-58-22"
+}]
+</p>
+        <h3 style="margin-bottom: -15px">POST /helpme</h3>
+        <p style="white-space: pre-wrap; padding-bottom: 10px">
+Принимает заявку на волонтерскую помощь.
+Пример запроса:
+{
+ "district":2,
+ "street":41,
+ "volunteer": 5,
+ "address":"Ул Лесная 33 к3 кв 291",
+ "name":"Иван",
+ "surname":"Тапорыжкин",
+ "phone":"+7 222 423 44 22",
+ "text":"Принесите мне, пожалуйста, собаку погулять, чтобы я мог выйти на улицу!"
+}
+Пример ответа:
+{"status":"success"}
+</p>
+</div>
+</body>
+</html>
